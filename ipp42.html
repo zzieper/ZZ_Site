@@ -11,6 +11,7 @@
   <!-- ── Navigation ── -->
   <nav>
     <a href="index.html" class="nav-logo">ZHZ</a>
+    <button class="nav-hamburger" id="nav-toggle" aria-label="Toggle navigation">☰</button>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="index.html#about">About</a></li>
@@ -54,5 +55,19 @@
     <p>&copy; 2026 Zachary H. Zieper · Woburn, MA</p>
   </footer>
 
+  <script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks  = document.querySelector('.nav-links');
+    navToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      navToggle.textContent = open ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.textContent = '☰';
+      });
+    });
+  </script>
 </body>
 </html>
