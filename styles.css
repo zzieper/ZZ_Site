@@ -978,8 +978,22 @@ footer a:hover { text-decoration: underline; }
     grid-template-columns: 1fr;
     text-align: center;
     padding: 3rem 1.5rem;
+    gap: 2rem;
   }
-  .hero-photo { display: none; }
+  /* Show photo above the text on mobile */
+  .hero-photo {
+    display: block;
+    order: -1;
+  }
+  .hero-photo img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+  }
+  .hero-photo::before { display: none; } /* hide the decorative border frame */
   .hero-text .tagline { max-width: 100%; margin-left: auto; margin-right: auto; }
   .hero-badges { justify-content: center; }
   .hero-cta    { justify-content: center; }
