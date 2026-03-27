@@ -458,8 +458,9 @@
 
         cubeCtx.putImageData(imageData, 0, 0);
 
-        // Scale display size preserving natural aspect ratio — height fixed at 72px
-        const displayH = 72;
+        // Scale display size preserving natural aspect ratio
+        // 52px on mobile (≤768px), 72px on desktop — matches ORIGIN.bottom below
+        const displayH = window.innerWidth <= 768 ? 52 : 72;
         const aspect   = cubeImg.naturalWidth / cubeImg.naturalHeight;
         cubeCanvas.style.height = displayH + 'px';
         cubeCanvas.style.width  = Math.round(displayH * aspect) + 'px';
@@ -473,8 +474,10 @@
     const flash    = document.getElementById('flash');
     const goodBoy  = document.getElementById('good-boy');
 
-    // Original resting position (bottom-left)
-    const ORIGIN = { bottom: 24, left: 24 };
+    // Resting position matches CSS: mobile bottom:25px, desktop bottom:24px
+    // (aligns cube centre with Louie centre on both screen sizes)
+    const mobile = window.innerWidth <= 768;
+    const ORIGIN = { bottom: mobile ? 25 : 24, left: mobile ? 16 : 24 };
 
     let dragging = false;
     let startX, startY, cubeStartX, cubeStartY;
