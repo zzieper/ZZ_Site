@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPP 43 Exchange — Zachary H. Zieper</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .ipp43-intro {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .ipp43-intro p {
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+    .ipp43-intro h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--navy);
+      margin-bottom: 0.8rem;
+      font-size: 1.5rem;
+    }
+    .hints-heading {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .hint-body p {
+      color: var(--text-mid);
+      font-size: 0.9rem;
+      margin-top: 0.8rem;
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav>
+    <a href="index.html" class="nav-logo">ZHZ</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="ipp42.html">IPP 42</a></li>
+      <li><a href="ipp43.html" class="active">IPP 43</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Page Hero ── -->
+  <div class="page-hero">
+    <p class="section-label" style="color:var(--gold-light);margin-bottom:0.5rem;">International Puzzle Party</p>
+    <h1>IPP 43 Exchange</h1>
+    <p>Hints, solution steps, and solver resources for my IPP 43 exchange puzzle.</p>
+  </div>
+
+  <!-- ── Content ── -->
+  <div class="page-content">
+
+    <div class="ipp43-intro">
+      <h2>About the Puzzle</h2>
+      <p>
+        Welcome to the IPP 43 Exchange puzzle page. Below you'll find a series of
+        hints to help you solve the puzzle at your own pace — reveal only what you
+        need. A full solution animation and BurrTools file are also available for
+        those who want the complete picture.
+      </p>
+    </div>
+
+    <p class="hints-heading">Hints</p>
+
+    <div class="hint-grid">
+
+      <!-- Hint 1 -->
+      <div class="hint-card" id="hint-1">
+        <div class="hint-header" onclick="toggleHint('hint-1')">
+          <div class="hint-number">1</div>
+          <span class="hint-label">Hint #1 — The Full Puzzle</span>
+          <span class="hint-chevron">▾</span>
+        </div>
+        <div class="hint-body">
+          <p>A look at the assembled puzzle to orient yourself.</p>
+          <img src="exchange43/Full_Puzzle_26.jpg" alt="Full Puzzle — IPP 43" />
+        </div>
+      </div>
+
+      <!-- Hint 2 -->
+      <div class="hint-card" id="hint-2">
+        <div class="hint-header" onclick="toggleHint('hint-2')">
+          <div class="hint-number">2</div>
+          <span class="hint-label">Hint #2 — Step-by-Step Solution</span>
+          <span class="hint-chevron">▾</span>
+        </div>
+        <div class="hint-body">
+          <p>A detailed walkthrough of the solution moves.</p>
+          <img src="exchange43/Louie_26_Steps.png" alt="Step-by-Step Solution — IPP 43" />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BurrTools Download -->
+    <div class="download-card">
+      <div class="icon">🧩</div>
+      <div>
+        <h3>BurrTools File</h3>
+        <p>
+          Download the BurrTools puzzle file to explore the solution digitally,
+          verify your assembly, or study the geometry in detail.
+        </p>
+        <a
+          href="exchange43/Louie_2026_V3.xmpuzzle"
+          class="btn btn-primary"
+          download="Louie_2026_V3.xmpuzzle"
+        >
+          ↓ Download BurrTools File
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="ipp42.html">IPP 42</a>
+      <a href="ipp43.html">IPP 43</a>
+      <a href="mailto:ZacharyZieper@gmail.com">ZacharyZieper@gmail.com</a>
+      <a href="https://www.linkedin.com/in/zzieper" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <p>&copy; 2026 Zachary H. Zieper · Woburn, MA</p>
+  </footer>
+
+  <script>
+    function toggleHint(id) {
+      const card = document.getElementById(id);
+      card.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
