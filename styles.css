@@ -816,14 +816,18 @@ footer a:hover { text-decoration: underline; }
   color: var(--gold);
   letter-spacing: 0.04em;
   opacity: 0;
+  visibility: hidden;
   transform: translateY(4px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s;
   pointer-events: none;
   white-space: nowrap;
+  user-select: none;
 }
 #good-boy.visible {
   opacity: 1;
+  visibility: visible;
   transform: translateY(0);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0s;
 }
 
 /* Cube — bottom LEFT */
