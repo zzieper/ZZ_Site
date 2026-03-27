@@ -809,9 +809,26 @@ footer a:hover { text-decoration: underline; }
 }
 
 
+/* "Good boy" proximity hint */
+#good-boy {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+#good-boy.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Cube — bottom LEFT */
 #puzzle-cube {
-  width: 72px;
+  width: auto;
   height: 72px;
   cursor: grab;
   position: fixed;

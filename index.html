@@ -336,7 +336,7 @@
 
   <!-- Rubik's cube — bottom LEFT, mouse-draggable -->
   <div id="puzzle-cube">
-    <canvas id="cube-canvas" style="width:100%;height:100%;display:block;"></canvas>
+    <canvas id="cube-canvas" style="display:block;"></canvas>
   </div>
 
   <!-- Louie drop zone — bottom RIGHT -->
@@ -344,6 +344,7 @@
     <div id="louie-drop">
       <canvas id="louie-canvas"></canvas>
     </div>
+    <div id="good-boy">Good boy 🐾</div>
   </div>
 
   <!-- Flash overlay -->
@@ -456,14 +457,21 @@
         }
 
         cubeCtx.putImageData(imageData, 0, 0);
+
+        // Scale display size preserving natural aspect ratio — height fixed at 72px
+        const displayH = 72;
+        const aspect   = cubeImg.naturalWidth / cubeImg.naturalHeight;
+        cubeCanvas.style.height = displayH + 'px';
+        cubeCanvas.style.width  = Math.round(displayH * aspect) + 'px';
       };
       cubeImg.src = 'images/Rubiks_Cube_Gold.png';
     })();
 
     // ── Mouse-based drag (no HTML5 drag API) ──
-    const cube  = document.getElementById('puzzle-cube');
-    const louie = document.getElementById('louie-drop');
-    const flash = document.getElementById('flash');
+    const cube     = document.getElementById('puzzle-cube');
+    const louie    = document.getElementById('louie-drop');
+    const flash    = document.getElementById('flash');
+    const goodBoy  = document.getElementById('good-boy');
 
     // Original resting position (bottom-left)
     const ORIGIN = { bottom: 24, left: 24 };
@@ -493,12 +501,23 @@
       if (!dragging) return;
       cube.style.left = (cubeStartX + e.clientX - startX) + 'px';
       cube.style.top  = (cubeStartY + e.clientY - startY) + 'px';
+
+      // Show "Good boy" when cube centre is within 130px of Louie centre
+      const louieRect = louie.getBoundingClientRect();
+      const cubeRect  = cube.getBoundingClientRect();
+      const lx = louieRect.left + louieRect.width  / 2;
+      const ly = louieRect.top  + louieRect.height / 2;
+      const cx = cubeRect.left  + cubeRect.width   / 2;
+      const cy = cubeRect.top   + cubeRect.height  / 2;
+      const dist = Math.hypot(cx - lx, cy - ly);
+      goodBoy.classList.toggle('visible', dist < 130);
     });
 
     document.addEventListener('mouseup', e => {
       if (!dragging) return;
       dragging = false;
       cube.classList.remove('dragging');
+      goodBoy.classList.remove('visible');
 
       const louieRect = louie.getBoundingClientRect();
       const cubeRect  = cube.getBoundingClientRect();
