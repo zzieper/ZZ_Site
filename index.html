@@ -336,76 +336,7 @@
 
   <!-- Rubik's cube — bottom LEFT, mouse-draggable -->
   <div id="puzzle-cube">
-    <svg viewBox="0 0 100 115" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
-      <defs>
-        <linearGradient id="shadeR" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="rgba(0,0,0,0.18)"/>
-          <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
-        </linearGradient>
-        <linearGradient id="shadeT" x1="0%" y1="100%" x2="0%" y2="0%">
-          <stop offset="0%" stop-color="rgba(0,0,0,0.1)"/>
-          <stop offset="100%" stop-color="rgba(255,255,255,0.15)"/>
-        </linearGradient>
-      </defs>
-
-      <!-- === TOP FACE (white/yellow) === -->
-      <!-- 9 stickers on top -->
-      <!-- Row 1 -->
-      <polygon points="50,2 67,11 50,20 33,11" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.2"/>
-      <polygon points="67,11 84,20 67,29 50,20" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.2"/>
-      <polygon points="84,20 101,29 84,38 67,29" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.2"/>
-      <!-- Row 2 -->
-      <polygon points="33,11 50,20 33,29 16,20" fill="#ffd500" stroke="#1a1a1a" stroke-width="1.2"/>
-      <polygon points="50,20 67,29 50,38 33,29" fill="#ffd500" stroke="#1a1a1a" stroke-width="1.2"/>
-      <polygon points="67,29 84,38 67,47 50,38" fill="#ffd500" stroke="#1a1a1a" stroke-width="1.2"/>
-      <!-- Row 3 -->
-      <polygon points="16,20 33,29 16,38 -1,29" fill="#ffd500" stroke="#1a1a1a" stroke-width="1.2"/>
-      <polygon points="33,29 50,38 33,47 16,38" fill="#ffd500" stroke="#1a1a1a" stroke-width="1.2"/>
-      <polygon points="50,38 67,47 50,56 33,47" fill="#ffd500" stroke="#1a1a1a" stroke-width="1.2"/>
-      <!-- Top face outline -->
-      <polygon points="50,2 101,29 50,56 -1,29" fill="none" stroke="#111" stroke-width="1.8" stroke-linejoin="round"/>
-      <!-- Top face highlight -->
-      <polygon points="50,2 101,29 50,56 -1,29" fill="url(#shadeT)" opacity="0.5"/>
-
-      <!-- === LEFT FACE (red/orange) === -->
-      <!-- 9 stickers on left -->
-      <!-- Col 1 -->
-      <polygon points="-1,29 16,38 16,56 -1,47" fill="#ff5722" stroke="#1a1a1a" stroke-width="1.2"/>
-      <polygon points="-1,47 16,56 16,74 -1,65" fill="#ff5722" stroke="#1a1a1a" stroke-width="1.2"/>
-      <polygon points="-1,65 16,74 16,92 -1,83" fill="#ff5722" stroke="#1a1a1a" stroke-width="1.2"/>
-      <!-- Col 2 -->
-      <polygon points="16,38 33,47 33,65 16,56" fill="#e53935" stroke="#1a1a1a" stroke-width="1.2"/>
-      <polygon points="16,56 33,65 33,83 16,74" fill="#e53935" stroke="#1a1a1a" stroke-width="1.2"/>
-      <polygon points="16,74 33,83 33,101 16,92" fill="#e53935" stroke="#1a1a1a" stroke-width="1.2"/>
-      <!-- Col 3 -->
-      <polygon points="33,47 50,56 50,74 33,65" fill="#e53935" stroke="#1a1a1a" stroke-width="1.2"/>
-      <polygon points="33,65 50,74 50,92 33,83" fill="#ff5722" stroke="#1a1a1a" stroke-width="1.2"/>
-      <polygon points="33,83 50,92 50,110 33,101" fill="#e53935" stroke="#1a1a1a" stroke-width="1.2"/>
-      <!-- Left face outline -->
-      <polygon points="-1,29 50,56 50,110 -1,83" fill="none" stroke="#111" stroke-width="1.8" stroke-linejoin="round"/>
-
-      <!-- === RIGHT FACE (blue/green) === -->
-      <!-- 9 stickers on right -->
-      <!-- Col 1 -->
-      <polygon points="50,56 67,47 67,65 50,74" fill="#1565c0" stroke="#1a1a1a" stroke-width="1.2"/>
-      <polygon points="50,74 67,65 67,83 50,92" fill="#43a047" stroke="#1a1a1a" stroke-width="1.2"/>
-      <polygon points="50,92 67,83 67,101 50,110" fill="#1565c0" stroke="#1a1a1a" stroke-width="1.2"/>
-      <!-- Col 2 -->
-      <polygon points="67,47 84,38 84,56 67,65" fill="#43a047" stroke="#1a1a1a" stroke-width="1.2"/>
-      <polygon points="67,65 84,56 84,74 67,83" fill="#1565c0" stroke="#1a1a1a" stroke-width="1.2"/>
-      <polygon points="67,83 84,74 84,92 67,101" fill="#43a047" stroke="#1a1a1a" stroke-width="1.2"/>
-      <!-- Col 3 -->
-      <polygon points="84,38 101,29 101,47 84,56" fill="#1565c0" stroke="#1a1a1a" stroke-width="1.2"/>
-      <polygon points="84,56 101,47 101,65 84,74" fill="#43a047" stroke="#1a1a1a" stroke-width="1.2"/>
-      <polygon points="84,74 101,65 101,83 84,92" fill="#1565c0" stroke="#1a1a1a" stroke-width="1.2"/>
-      <!-- Right face outline -->
-      <polygon points="50,56 101,29 101,83 50,110" fill="none" stroke="#111" stroke-width="1.8" stroke-linejoin="round"/>
-      <!-- Right face shade -->
-      <polygon points="50,56 101,29 101,83 50,110" fill="url(#shadeR)" opacity="0.6"/>
-
-      <!-- Overall cube outline -->
-      <polygon points="50,2 101,29 101,83 50,110 -1,83 -1,29" fill="none" stroke="#111" stroke-width="2.2" stroke-linejoin="round"/>
-    </svg>
+    <canvas id="cube-canvas" style="width:100%;height:100%;display:block;"></canvas>
   </div>
 
   <!-- Louie drop zone — bottom RIGHT -->
@@ -472,6 +403,61 @@
         ctx.putImageData(imageData, 0, 0);
       };
       img.src = 'images/Louie_Icon.png';
+    })();
+
+    // ── Load & background-remove the gold Rubik's cube ──
+    (function() {
+      const cubeCanvas = document.getElementById('cube-canvas');
+      const cubeCtx    = cubeCanvas.getContext('2d');
+      const cubeImg    = new Image();
+      cubeImg.onload = function() {
+        cubeCanvas.width  = cubeImg.naturalWidth;
+        cubeCanvas.height = cubeImg.naturalHeight;
+        cubeCtx.drawImage(cubeImg, 0, 0);
+
+        const imageData = cubeCtx.getImageData(0, 0, cubeCanvas.width, cubeCanvas.height);
+        const d = imageData.data;
+        const w = cubeCanvas.width, h = cubeCanvas.height;
+
+        // Flood-fill from all 4 edges — only removes connected light/white pixels
+        const visited = new Uint8Array(w * h);
+        const queue   = [];
+
+        function isLight(x, y) {
+          const idx = (y * w + x) * 4;
+          return d[idx] > 190 && d[idx+1] > 190 && d[idx+2] > 190;
+        }
+
+        function enq(x, y) {
+          if (x < 0 || x >= w || y < 0 || y >= h) return;
+          const k = y * w + x;
+          if (visited[k] || !isLight(x, y)) return;
+          visited[k] = 1;
+          queue.push(k);
+        }
+
+        for (let x = 0; x < w; x++) { enq(x, 0); enq(x, h-1); }
+        for (let y = 0; y < h; y++) { enq(0, y); enq(w-1, y); }
+
+        let qi = 0;
+        while (qi < queue.length) {
+          const k = queue[qi++];
+          const x = k % w, y = Math.floor(k / w);
+          enq(x-1, y); enq(x+1, y); enq(x, y-1); enq(x, y+1);
+        }
+
+        for (let k = 0; k < w * h; k++) {
+          if (!visited[k]) continue;
+          const i = k * 4;
+          const lightness = (d[i] + d[i+1] + d[i+2]) / 3;
+          // Feather the edge so there's no hard fringe
+          const t = Math.max(0, (lightness - 180) / 75);
+          d[i+3] = Math.round((1 - t) * d[i+3]);
+        }
+
+        cubeCtx.putImageData(imageData, 0, 0);
+      };
+      cubeImg.src = 'images/Rubiks_Cube_Gold.png';
     })();
 
     // ── Mouse-based drag (no HTML5 drag API) ──
