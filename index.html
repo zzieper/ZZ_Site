@@ -479,16 +479,14 @@
     let dragging = false;
     let startX, startY, cubeStartX, cubeStartY;
 
-    cube.addEventListener('mousedown', e => {
-      e.preventDefault();
+    // ── Shared drag handlers (mouse + touch) ──
+    function onDragStart(clientX, clientY) {
       dragging = true;
       const rect = cube.getBoundingClientRect();
-      startX = e.clientX;
-      startY = e.clientY;
+      startX = clientX;
+      startY = clientY;
       cubeStartX = rect.left;
       cubeStartY = rect.top;
-
-      // Switch from bottom/left anchoring to top/left absolute
       cube.style.transition = 'none';
       cube.style.bottom = 'auto';
       cube.style.right  = 'auto';
@@ -496,25 +494,24 @@
       cube.style.top    = rect.top  + 'px';
       cube.classList.add('dragging');
       goodBoy.classList.remove('visible');
-    });
+    }
 
-    document.addEventListener('mousemove', e => {
+    function onDragMove(clientX, clientY) {
       if (!dragging) return;
-      cube.style.left = (cubeStartX + e.clientX - startX) + 'px';
-      cube.style.top  = (cubeStartY + e.clientY - startY) + 'px';
+      cube.style.left = (cubeStartX + clientX - startX) + 'px';
+      cube.style.top  = (cubeStartY + clientY - startY) + 'px';
 
-      // Show "Good boy" when cube centre is within 130px of Louie centre
+      // "Good boy" proximity hint
       const louieRect = louie.getBoundingClientRect();
       const cubeRect  = cube.getBoundingClientRect();
       const lx = louieRect.left + louieRect.width  / 2;
       const ly = louieRect.top  + louieRect.height / 2;
       const cx = cubeRect.left  + cubeRect.width   / 2;
       const cy = cubeRect.top   + cubeRect.height  / 2;
-      const dist = Math.hypot(cx - lx, cy - ly);
-      goodBoy.classList.toggle('visible', dist < 130);
-    });
+      goodBoy.classList.toggle('visible', Math.hypot(cx - lx, cy - ly) < 130);
+    }
 
-    document.addEventListener('mouseup', e => {
+    function onDragEnd() {
       if (!dragging) return;
       dragging = false;
       cube.classList.remove('dragging');
@@ -527,18 +524,15 @@
 
       if (cx >= louieRect.left && cx <= louieRect.right &&
           cy >= louieRect.top  && cy <= louieRect.bottom) {
-        // Hit! Flash and redirect
         louie.classList.add('drag-over');
         flash.classList.add('go');
         setTimeout(() => { window.location.href = 'secret.html'; }, 400);
       } else {
-        // Snap back to bottom-left
         cube.style.transition = 'left 0.45s cubic-bezier(.22,1,.36,1), top 0.45s cubic-bezier(.22,1,.36,1)';
         const finalLeft = ORIGIN.left;
         const finalTop  = window.innerHeight - cube.offsetHeight - ORIGIN.bottom;
         cube.style.left = finalLeft + 'px';
         cube.style.top  = finalTop  + 'px';
-        // After snap, restore bottom/left anchoring
         setTimeout(() => {
           cube.style.transition = '';
           cube.style.top    = 'auto';
@@ -547,6 +541,30 @@
           cube.style.left   = ORIGIN.left   + 'px';
         }, 460);
       }
+    }
+
+    // ── Mouse events ──
+    cube.addEventListener('mousedown', e => { e.preventDefault(); onDragStart(e.clientX, e.clientY); });
+    document.addEventListener('mousemove', e => onDragMove(e.clientX, e.clientY));
+    document.addEventListener('mouseup',   () => onDragEnd());
+
+    // ── Touch events (passive:false so we can preventDefault and stop page scroll) ──
+    cube.addEventListener('touchstart', e => {
+      e.preventDefault();
+      const t = e.touches[0];
+      onDragStart(t.clientX, t.clientY);
+    }, { passive: false });
+
+    document.addEventListener('touchmove', e => {
+      if (!dragging) return;
+      e.preventDefault();
+      const t = e.touches[0];
+      onDragMove(t.clientX, t.clientY);
+    }, { passive: false });
+
+    document.addEventListener('touchend', e => {
+      const t = e.changedTouches[0];
+      onDragEnd(t.clientX, t.clientY);
     });
 
     // Active nav link
