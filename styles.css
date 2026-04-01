@@ -104,6 +104,8 @@ nav {
 /* ── Hero ── */
 .hero {
   min-height: 100vh;
+  /* Use svh (small viewport height) where supported — excludes Android browser chrome */
+  min-height: 100svh;
   display: flex;
   align-items: center;
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1e3f7a 100%);
@@ -974,10 +976,16 @@ footer a:hover { text-decoration: underline; }
   .nav-links a   { font-size: 0.95rem; display: block; padding: 0.25rem 0; }
 
   /* ── Hero — single column, centred ── */
+  .hero {
+    min-height: unset;
+    padding-top: 64px;
+    padding-bottom: 3rem;
+    align-items: flex-start;
+  }
   .hero-inner {
     grid-template-columns: 1fr;
     text-align: center;
-    padding: 3rem 1.5rem;
+    padding: 2.5rem 1.5rem 0;
     gap: 2rem;
   }
   /* Show photo above the text on mobile */
